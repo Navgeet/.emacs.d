@@ -117,3 +117,7 @@
 [submodule "packs/dev/lang-pack/vendor/submodules/glsl-mode"]
 	path = packs/dev/lang-pack/vendor/submodules/glsl-mode
 	url = git://github.com/jimhourihan/glsl-mode.git
+[submodule "packs/live/foundation-pack/lib/elscreen"]
+	path = packs/live/foundation-pack/lib/elscreen
+	url = https://github.com/knu/elscreen
+        ignore = dirty
