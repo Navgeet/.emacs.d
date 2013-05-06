@@ -11,7 +11,7 @@
 (live-load-config-file "scratch-conf.el")
 (live-load-config-file "highlight-tail-conf.el")
 (live-load-config-file "gist-conf.el")
-(live-load-config-file "browse-kill-ring-conf.el")
+;; (live-load-config-file "browse-kill-ring-conf.el")
 (live-load-config-file "expand-region-conf.el")
 (live-load-config-file "ace-jump-mode-conf.el")
 (live-load-config-file "multiple-cursors-conf.el")
