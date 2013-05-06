@@ -28,6 +28,7 @@
 ;; (live-load-config-file "zone-conf.el")
 (live-load-config-file "monkey-patch.el")
 
+(windmove-default-keybindings)
 
 (when (eq system-type 'darwin)
   (live-load-config-file "osx.el"))
