@@ -30,9 +30,8 @@
 (make-directory live-backups-dir t)
 (make-directory live-custom-dir t)
 (make-directory live-pscratch-dir t)
-
-;; Load manifest
-(load-file (concat live-root-dir "manifest.el"))
+(defun live-version ()
+  "1.0beta22")
 
 ;; load live-lib
 (load-file (concat live-lib-dir "live-core.el"))
