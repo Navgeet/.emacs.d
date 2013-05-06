@@ -10,6 +10,7 @@
 
 ;;default packs
 (let* ((pack-names '("foundation-pack"
+                     "mail-pack"
                      "colour-pack"
                      "clojure-pack"
                      "lang-pack"
