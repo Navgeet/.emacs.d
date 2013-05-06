@@ -12,3 +12,6 @@
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
+
+;; Make backups of files, even when they're in version control
+(setq vc-make-backup-files t)
