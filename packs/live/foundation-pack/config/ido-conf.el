@@ -1,4 +1,6 @@
 (require 'idomenu)
+(live-add-pack-lib "ido-ubiquitous")
+(require 'ido-ubiquitous)
 
 (ido-mode t)
 (setq ido-enable-prefix nil
@@ -7,7 +9,8 @@
       ido-max-prospects 10
       ido-default-file-method 'selected-window)
 
-(icomplete-mode 1)
+;; (icomplete-mode 1)
+(ido-ubiquitous-mode 1)
 
 (defvar live-symbol-names)
 (defvar live-name-and-pos)
