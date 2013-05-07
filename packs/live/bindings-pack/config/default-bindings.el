@@ -210,7 +210,7 @@
 ;; Ace jump mode
 (global-set-key (kbd "C-o") 'ace-jump-mode)
 ;; <M1> for the same
-(global-set-key (kbd "<XF86Tools>") 'ace-jump-mode)
+(global-set-key (kbd "<XF86Launch8>") 'ace-jump-mode)
 
 ;; Show documentation/information with M-RET
 (define-key lisp-mode-shared-map (kbd "M-RET") 'live-lisp-describe-thing-at-point)
