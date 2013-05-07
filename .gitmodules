@@ -121,3 +121,7 @@
 	path = packs/live/foundation-pack/lib/elscreen
 	url = https://github.com/knu/elscreen
         ignore = dirty
+[submodule "packs/live/foundation-pack/lib/ido-ubiquitous"]
+	path = packs/live/foundation-pack/lib/ido-ubiquitous
+	url = https://github.com/technomancy/ido-ubiquitous
+        ignore = dirty
