@@ -11,6 +11,7 @@
 ;;default packs
 (let* ((pack-names '("foundation-pack"
                      "mail-pack"
+                     "file-management-pack"
                      "colour-pack"
                      "clojure-pack"
                      "lang-pack"
