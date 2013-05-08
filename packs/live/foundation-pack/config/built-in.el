@@ -85,3 +85,5 @@
       ;; keep the home clean
       savehist-file (concat live-tmp-dir "savehist"))
 (savehist-mode t)
+
+(setq vc-follow-symlinks t)
