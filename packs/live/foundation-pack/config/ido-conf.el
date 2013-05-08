@@ -69,3 +69,9 @@
                         (string= (car imenu--rescan-item) name))
               (add-to-list 'live-symbol-names name)
               (add-to-list 'live-name-and-pos (cons name position))))))))
+
+(defadvice ido-find-file (after find-file-sudo activate)
+  "Find file as root if necessary."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
