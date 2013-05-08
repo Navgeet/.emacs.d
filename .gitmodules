@@ -125,3 +125,7 @@
 	path = packs/live/foundation-pack/lib/ido-ubiquitous
 	url = https://github.com/technomancy/ido-ubiquitous
         ignore = dirty
+[submodule "packs/live/file-management-pack/lib/sunrise-commander"]
+	path = packs/live/file-management-pack/lib/sunrise-commander
+	url = https://github.com/escherdragon/sunrise-commander
+        ignore = dirty
