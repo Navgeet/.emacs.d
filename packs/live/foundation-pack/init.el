@@ -2,7 +2,7 @@
                (eq 'windows-nt system-type)))
   (live-load-config-file "auto-compile-conf.el"))
 
-(require 'dircolors)
+;; (require 'dircolors)
 (require 'smooth-scrolling)
 ;; (require 'buffer-move)
 (require 'find-file-in-project)
