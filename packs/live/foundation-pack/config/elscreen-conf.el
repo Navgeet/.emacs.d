@@ -89,5 +89,7 @@ when error is occurred."
 (setq elscreen-tab-display-kill-screen nil)
 ;; don's display the <-> icon
 (setq elscreen-tab-display-control nil)
+;; don't display the tabs anymore
+(setq elscreen-display-tab nil)
 (global-set-key (kbd "<C-s-right>") 'elscreen-next)
 (global-set-key (kbd "<C-s-left>") 'elscreen-previous)
