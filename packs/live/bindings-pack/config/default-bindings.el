@@ -123,6 +123,9 @@
 (global-set-key (kbd "C-M-_") 'undo-tree-undo)
 (global-set-key (kbd "C-_")   'undo-tree-undo)
 
+;; show line numbers temporarily when going to a line number with goto-line
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
 ;;mark current function
 (global-set-key (kbd "C-x C-p") 'mark-defun)
 
