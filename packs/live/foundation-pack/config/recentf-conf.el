@@ -14,4 +14,14 @@
   (interactive)
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
-        (message "Aborting")))
+    (message "Aborting")))
+
+(defvar recentf-dir-list)
+(put 'recentf-dir-list 'history-length 50)
+
+(defun recentf-add-dir (dir)
+  (let ((history-delete-duplicates t))
+    (add-to-history 'recentf-dir-list dir)))
+
+(savehist-mode 1)
+(add-to-list 'savehist-additional-variables 'recentf-dir-list)

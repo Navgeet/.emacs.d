@@ -223,3 +223,7 @@
 
 ;;; Key Chords
 (key-chord-define-global "xx" 'ido-switch-buffer) ;; buffer switch
+
+;;; Sunrise
+(define-key sr-mode-map (kbd "/") 'nav/sr-goto-dir)
+(key-chord-define sr-mode-map "//" 'nav/sr-goto-recent-dir)
