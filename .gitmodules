@@ -129,3 +129,6 @@
 	path = packs/live/file-management-pack/lib/sunrise-commander
 	url = https://github.com/escherdragon/sunrise-commander
         ignore = dirty
+[submodule "packs/live/music-pack/lib/emms"]
+	path = packs/live/music-pack/lib/emms
+	url = http://git.sv.gnu.org/r/emms.git
