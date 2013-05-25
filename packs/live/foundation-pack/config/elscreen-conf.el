@@ -52,39 +52,31 @@ when error is occurred."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(savehist-mode 1)
-(add-to-list 'savehist-additional-variables 'nav/elscreen-music-screen-layout)
-
-(defvar nav/elscreen-music-screen-layout nil)
-
-(defun nav/elscreen-music-screen-layout-save ()
-  (interactive)
-  (setq nav/elscreen-music-screen-layout (current-window-configuration)))
-
 (defun nav/elscreen-init ()
   "Set up my usual window configuration."
-  ;; 3 empty screens for work
+  ;; 4 empty screens for work
+  (elscreen-create)
   (elscreen-create)
   (elscreen-create)
   ;; 1 screen for music
   (elscreen-create)
-  (elscreen-goto 4)
-  ;; (nav/elscreen-music-screen-init)
+  (elscreen-goto 5)
+  (nav/elscreen-music-screen-init)
   ;; finally..
   (elscreen-goto 1))
 
-;; (defun nav/elscreen-music-screen-init ()
-;;   (interactive)
-;;   (elscreen-screen-nickname "music")
-;;   ;; create buffers
-;;   (emms-smart-browse)
-;;   (emms-lyrics-create-buffer)
-;;   (nav/emms-reco-similiar-tracks-create-buffer)
-;;   (nav/emms-reco-top-tracks-create-buffer))
-;;   ;; (set-window-configuration nav/elscreen-music-screen-layout))
+(defun nav/elscreen-music-screen-init ()
+  (interactive)
+  (elscreen-screen-nickname "music")
+  ;; create buffers
+  (split-window-horizontally)
+  (emms-browse-by-artist)
+  (other-window 1)
+  (emms-lyrics-create-buffer)
+  (switch-to-buffer nav/emms-lyrics-buffer-name))
 
 (elscreen-start)
-(nav/elscreen-init)
+(add-hook 'after-init-hook 'nav/elscreen-init)
 ;; don't display the [X] icon
 (setq elscreen-tab-display-kill-screen nil)
 ;; don's display the <-> icon
