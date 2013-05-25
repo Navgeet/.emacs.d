@@ -21,6 +21,11 @@
 (defvar nav/emms-lyrics-time-track-started nil
   "Time when track was started.")
 
+(defcustom nav/emms-lyrics-display-hook nil
+  "*Hook run when a lyric has to be displayed."
+  :type 'hook
+  :group 'emms)
+
 (defun nav/get-lyrics-options (artist song)
   "Return a vector with options for lyrics in order of best match"
   (let* ((str (shell-command-to-string (format "python2 ~/lyricscraper.py \"%s\" \"%s\""
@@ -219,44 +224,53 @@ job."
 				      (and next-time (- next-time time)))))))
 	(setq lyrics-alist (cdr lyrics-alist))))))
 
+(defun emms-lyrics-display-on-modeline-fn (lyric line)
+  (when emms-lyrics-display-on-modeline
+    (emms-lyrics-mode-line)
+    (setq emms-lyrics-mode-line-string lyric)
+    ;; (setq emms-lyrics-mode-line-string ; make it fit scroller width
+    ;;       (concat emms-lyrics-mode-line-string
+    ;;               (make-string
+    ;;                (abs (- emms-lyrics-scroll-width (length lyric)))
+    ;;                (string-to-char " "))))
+    (force-mode-line-update)))
+
+(defun emms-lyrics-display-on-minibuffer-fn (lyric line)
+  (when emms-lyrics-display-on-minibuffer
+    (unless (minibuffer-window-active-p (selected-window))
+      (message lyric))))
+
+(defun emms-lyrics-display-in-buffer-fn (lyric line)
+  (when emms-lyrics-display-buffer
+    (with-current-buffer emms-lyrics-buffer
+      (save-excursion
+        (when line
+          (let ((inhibit-read-only t))
+            (goto-char (point-min))
+            (add-text-properties (point-min) (point-max) '(face default))
+            (forward-line (1- line))
+            (add-text-properties (point) (progn
+                                           (end-of-line)
+                                           (point))
+                                 '(face warning))))))
+    (mapc (lambda (win)
+            (unless (eq (selected-window) win)
+              (with-selected-window win
+                (goto-char (point-min))
+                (forward-line (1- line)))))
+          (get-buffer-window-list emms-lyrics-buffer nil t))))
+
 (defun emms-lyrics-display (lyric line)
   "Display LYRIC now.
 See `emms-lyrics-display-on-modeline' and
 `emms-lyrics-display-on-minibuffer' on how to config where to
 display."
   (when emms-lyrics-alist
-    (when emms-lyrics-display-on-modeline
-      (emms-lyrics-mode-line)
-      (setq emms-lyrics-mode-line-string lyric)
-      ;; (setq emms-lyrics-mode-line-string ; make it fit scroller width
-      ;;       (concat emms-lyrics-mode-line-string
-      ;;               (make-string
-      ;;                (abs (- emms-lyrics-scroll-width (length lyric)))
-      ;;                (string-to-char " "))))
-      (force-mode-line-update))
+    (run-hook-with-args 'nav/emms-lyrics-display-hook lyric line)))
 
-    (when emms-lyrics-display-on-minibuffer
-      (unless (minibuffer-window-active-p (selected-window))
-        (message lyric)))
-
-    (when emms-lyrics-display-buffer
-      (with-current-buffer emms-lyrics-buffer
-	(save-excursion
-	  (when line
-	    (let ((inhibit-read-only t))
-	      (goto-char (point-min))
-	      (add-text-properties (point-min) (point-max) '(face default))
-	      (forward-line (1- line))
-	      (add-text-properties (point) (progn
-					     (end-of-line)
-					     (point))
-				   '(face warning))))))
-      (mapc (lambda (win)
-	      (unless (eq (selected-window) win)
-		(with-selected-window win
-		  (goto-char (point-min))
-		  (forward-line (1- line)))))
-	    (get-buffer-window-list emms-lyrics-buffer nil t)))))
+(add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-on-modeline-fn)
+(add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-on-minibuffer-fn)
+(add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-in-buffer-fn)
 
 (defun emms-lyrics-read-file (file &optional catchup)
   "Read a lyric file(LRC format).
