@@ -232,6 +232,9 @@
 
 (global-set-key (kbd "C-x !") 'live-server-kill-terminal)
 
+;; This is lifesaver for my pinky
+(global-set-key (kbd "<menu>") 'er/expand-region)
+
 ;;; Key Chords
 (key-chord-define-global "xx" 'ido-switch-buffer) ;; buffer switch
 
