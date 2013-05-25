@@ -28,6 +28,18 @@
 
 (defvar nav/emms-lyrics-current-line "")
 
+(defvar nav/emms-lyrics-inhibit nil
+  "Non-nil disables lyrics scraping and display.")
+
+(defun nav/emms-lyrics-toggle ()
+  (interactive)
+  (if nav/emms-lyrics-inhibit
+      (progn
+        (message "EMMS Lyrics on")
+        (setq nav/emms-lyrics-inhibit nil))
+    (message "EMMS Lyrics off")
+    (setq nav/emms-lyrics-inhibit t)))
+
 (defun nav/get-lyrics-options (artist song)
   "Return a vector with options for lyrics in order of best match"
   (let* ((str (shell-command-to-string (format "python2 ~/lyricscraper.py \"%s\" \"%s\""
@@ -155,17 +167,17 @@ e.g., (emms-lyrics-find-lyric \"abc.lrc\")"
 (setq emms-lyrics-display-buffer t)
 (setq emms-lyrics-display-on-minibuffer nil)
 (setq emms-lyrics-display-on-modeline nil)
-(add-hook 'emms-player-started-hook (lambda ()
-				      (interactive)
-				      (setq nav/emms-lyrics-time-track-started
-					    (current-time))))
+
 (remove-hook 'emms-player-started-hook 'emms-lyrics-start)
 (add-hook 'emms-player-started-hook (lambda ()
 				      (interactive)
 				      (setq emms-lyrics-start-time (current-time)
+                                            nav/emms-lyrics-time-track-started
+                                            (current-time)
 					    emms-lyrics-pause-time nil
 					    emms-lyrics-elapsed-time 0)
-				      (later-do 'nav/emms-lyrics-start)))
+                                      (unless nav/emms-lyrics-inhibit
+                                        (later-do 'nav/emms-lyrics-start))))
 
 ;;; Patches
 (defun emms-lyrics-create-buffer ()
