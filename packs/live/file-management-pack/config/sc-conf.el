@@ -14,3 +14,9 @@
 (defadvice sr-goto-dir (around sr-goto-dir-around activate)
   ad-do-it
   (recentf-add-dir dir))
+
+;; revisit later
+(remove-hook 'window-size-change-functions 'sr-lock-window)
+
+;; for some reason this causes other-window to misbehave
+(setq sr-traditional-other-window t)
