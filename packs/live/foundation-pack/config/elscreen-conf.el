@@ -69,11 +69,8 @@ when error is occurred."
   (interactive)
   (elscreen-screen-nickname "music")
   ;; create buffers
-  (split-window-horizontally)
-  (emms-browse-by-artist)
-  (other-window 1)
-  (emms-lyrics-create-buffer)
-  (switch-to-buffer nav/emms-lyrics-buffer-name))
+  (emms-smart-browse)
+  (emms-lyrics-create-buffer))
 
 (elscreen-start)
 (add-hook 'after-init-hook 'nav/elscreen-init)
