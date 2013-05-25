@@ -105,7 +105,7 @@
 (defun live-load-config-file (f-name)
   "Load the config file with name f-name in the current pack"
   (let* ((config-dir (live-pack-config-dir)))
-    (load-file (concat config-dir f-name))))
+    (load (expand-file-name (concat config-dir f-name)))))
 
 (defun live-use-packs (pack-list)
   "Use the packs in pack-list - overrides the defaults and any
