@@ -277,9 +277,14 @@ display."
                                           (interactive)
                                           (setq nav/emms-lyrics-current-line lyric)
                                           (mlf-updater)))
-(add-hook 'emms-player-stopped-hook (lambda ()
-                                      (interactive)
-                                      (setq nav/emms-lyrics-current-line "")))
+
+(let ((func (lambda ()
+              (interactive)
+              (setq nav/emms-lyrics-current-line ""))))
+  (add-hook 'emms-player-stopped-hook func)
+  (add-hook 'emms-player-started-hook-hook func)
+  (add-hook 'emms-player-paused-hook-hook func)
+  (add-hook 'emms-player-finished-hook-hook func))
 
 (defun emms-lyrics-read-file (file &optional catchup)
   "Read a lyric file(LRC format).
