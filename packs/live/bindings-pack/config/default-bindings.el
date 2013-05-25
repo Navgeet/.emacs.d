@@ -112,6 +112,12 @@
 (define-key paredit-mode-map (kbd "M-k")     'live-paredit-backward-kill)
 (define-key paredit-mode-map (kbd "M-\\")    'live-paredit-delete-horizontal-space)
 
+;; try these for now
+(define-key paredit-mode-map (kbd "<C-up>") 'paredit-backward-up)
+(define-key paredit-mode-map (kbd "<C-down>") 'paredit-forward-up)
+(define-key paredit-mode-map (kbd "<C-left>") 'paredit-backward)
+(define-key paredit-mode-map (kbd "<C-right>") 'paredit-forward)
+
 ;;browse kill ring (visual paste)
 ;; (global-set-key (kbd "M-y") 'browse-kill-ring)
 
