@@ -26,6 +26,8 @@
   :type 'hook
   :group 'emms)
 
+(defvar nav/emms-lyrics-current-line "")
+
 (defun nav/get-lyrics-options (artist song)
   "Return a vector with options for lyrics in order of best match"
   (let* ((str (shell-command-to-string (format "python2 ~/lyricscraper.py \"%s\" \"%s\""
@@ -271,6 +273,13 @@ display."
 (add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-on-modeline-fn)
 (add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-on-minibuffer-fn)
 (add-hook 'nav/emms-lyrics-display-hook 'emms-lyrics-display-in-buffer-fn)
+(add-hook 'nav/emms-lyrics-display-hook (lambda (lyric line)
+                                          (interactive)
+                                          (setq nav/emms-lyrics-current-line lyric)
+                                          (mlf-updater)))
+(add-hook 'emms-player-stopped-hook (lambda ()
+                                      (interactive)
+                                      (setq nav/emms-lyrics-current-line "")))
 
 (defun emms-lyrics-read-file (file &optional catchup)
   "Read a lyric file(LRC format).

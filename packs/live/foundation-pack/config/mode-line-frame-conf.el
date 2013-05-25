@@ -24,7 +24,10 @@
    (propertize " | " 'face 'nav/elscreen-mlf-extra-face)))
 
 (setq mode-line-frame-format
-      (list " " '(:eval (nav/elscreen-mlf-construct-frame-line))))
+      (list " "
+            '(:eval (nav/elscreen-mlf-construct-frame-line))
+            '(:propertize " | " face nav/elscreen-mlf-extra-face)
+            '(:propertize nav/emms-lyrics-current-line face nav/elscreen-mlf-active-face)))
 
 (setq mode-line-frame-parameters
       '((title . "mode-line-frame")
