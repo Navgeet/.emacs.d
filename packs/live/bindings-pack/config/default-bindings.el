@@ -241,6 +241,8 @@
 ;;; Sunrise
 (define-key sr-mode-map (kbd "/") 'nav/sr-goto-dir)
 (key-chord-define sr-mode-map "//" 'nav/sr-goto-recent-dir)
+(define-key sr-mode-map (kbd "C-c s") 'sr-interactive-sort)
+(define-key sr-mode-map (kbd "s") 'sr-sticky-isearch-forward)
 
 ;;; EMMS
 (define-key dired-mode-map [(insert)] 'nav/emms-add-dired-and-unmark)
