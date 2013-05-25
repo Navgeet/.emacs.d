@@ -220,3 +220,6 @@
 (global-set-key (kbd "C-x o") 'win-switch-dispatch)
 
 (global-set-key (kbd "C-x !") 'live-server-kill-terminal)
+
+;;; Key Chords
+(key-chord-define-global "xx" 'ido-switch-buffer) ;; buffer switch
