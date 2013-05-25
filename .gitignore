@@ -27,3 +27,4 @@ swank/*
 elpa/*
 
 *.trash.*
+emms/*

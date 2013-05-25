@@ -17,6 +17,7 @@
                      "lang-pack"
                      "power-pack"
                      "git-pack"
+                     "music-pack"
                      "bindings-pack"))
        (live-dir (file-name-as-directory "live"))
        (dev-dir  (file-name-as-directory "dev")))

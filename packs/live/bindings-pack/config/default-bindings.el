@@ -232,3 +232,16 @@
 ;;; Sunrise
 (define-key sr-mode-map (kbd "/") 'nav/sr-goto-dir)
 (key-chord-define sr-mode-map "//" 'nav/sr-goto-recent-dir)
+
+;;; EMMS
+(define-key dired-mode-map [(insert)] 'nav/emms-add-dired-and-unmark)
+(define-key emms-browser-mode-map [(delete)] 'nav/emms-browser-remove-current-node)
+(global-set-key (kbd "<f2>") 'emms-volume-lower)
+(global-set-key (kbd "<f3>") 'emms-volume-raise)
+(global-set-key (kbd "<f5>") 'emms-pause)
+(global-set-key (kbd "<f6>") 'emms-stop-and-next)
+(global-set-key (kbd "<f7>") 'emms-previous)
+(global-set-key (kbd "<f8>") 'emms-next)
+;; Press C-l to add and play track
+(define-key minibuffer-local-map "\C-l" 'ido-exit-minibuffer)
+(global-set-key (kbd "M-`") 'nav/emms-play-interactively)
