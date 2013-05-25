@@ -187,9 +187,11 @@
 (global-set-key (kbd "C-x M-f")   'ido-find-file-other-window)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
 (global-set-key (kbd "C-x f")     'live-recentf-ido-find-file)
-(global-set-key (kbd "C-x C-r")   'ido-recentf-open)
+;; (global-set-key (kbd "C-x C-r")   'ido-recentf-open)
 (global-set-key (kbd "M-`")       'file-cache-minibuffer-complete)
 (global-set-key (kbd "C-x C-b")   'ibuffer)
+(global-set-key (kbd "C-x C-k") 'delete-this-buffer-and-file)
+(global-set-key (kbd "C-x C-r") 'rename-this-buffer-and-file)
 
 ;; Window switching.
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
