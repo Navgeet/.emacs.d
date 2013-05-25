@@ -282,9 +282,9 @@ display."
               (interactive)
               (setq nav/emms-lyrics-current-line ""))))
   (add-hook 'emms-player-stopped-hook func)
-  (add-hook 'emms-player-started-hook-hook func)
-  (add-hook 'emms-player-paused-hook-hook func)
-  (add-hook 'emms-player-finished-hook-hook func))
+  (add-hook 'emms-player-started-hook func)
+  (add-hook 'emms-player-paused-hook func)
+  (add-hook 'emms-player-finished-hook func))
 
 (defun emms-lyrics-read-file (file &optional catchup)
   "Read a lyric file(LRC format).
