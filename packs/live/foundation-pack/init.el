@@ -27,8 +27,9 @@
 ;; (live-load-config-file "win-switch-conf.el")
 ;; (live-load-config-file "zone-conf.el")
 (live-load-config-file "monkey-patch.el")
-(live-load-config-file "package.el")
-(live-load-config-file "elscreen.el")
+(live-load-config-file "package-conf.el")
+(live-load-config-file "elscreen-conf.el")
+(live-load-config-file "mode-line-frame-conf.el")
 
 (windmove-default-keybindings)
 
