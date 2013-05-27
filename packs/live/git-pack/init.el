@@ -1,3 +1,3 @@
-;;; git-pack/init.el
+;;; git-pack/init
 
-(live-load-config-file "magit-conf.el")
+(live-load-config-file "magit-conf")

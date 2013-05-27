@@ -1,5 +1,5 @@
-(live-load-config-file "sc-conf.el")
-(live-load-config-file "dired-conf.el")
+(live-load-config-file "sc-conf")
+(live-load-config-file "dired-conf")
 
 (require 'openwith)
 (openwith-mode 1)
