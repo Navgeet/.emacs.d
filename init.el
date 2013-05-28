@@ -18,6 +18,7 @@
                      "power-pack"
                      "git-pack"
                      "music-pack"
+                     "irc-pack"
                      "bindings-pack"))
        (live-dir (file-name-as-directory "live"))
        (dev-dir  (file-name-as-directory "dev")))
