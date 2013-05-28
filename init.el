@@ -28,3 +28,6 @@
 (mapcar (lambda (pack-dir)
           (live-load-pack pack-dir))
         (live-pack-dirs))
+
+;; load confidential data
+(load-file (concat user-emacs-directory "confidential.el"))

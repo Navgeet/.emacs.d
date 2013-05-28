@@ -28,3 +28,4 @@ elpa/*
 
 *.trash.*
 emms/*
+confidential.el
