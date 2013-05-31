@@ -31,6 +31,7 @@
 (live-load-config-file "elscreen-conf")
 (live-load-config-file "mode-line-frame-conf")
 (live-load-config-file "whitespace-conf.el")
+(live-load-config-file "org-mode-conf.el")
 
 (windmove-default-keybindings)
 
