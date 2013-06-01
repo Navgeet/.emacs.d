@@ -100,6 +100,11 @@ e.g., (emms-lyrics-find-lyric \"abc.lrc\")"
   (let* ((file nav/emms-lyrics-current-lrc-file)
 	 (marker (gethash file nav/emms-lyrics-marker-db))
 	 url)
+    ;; a check for nil marker
+    ;; this usually happens when lrc file is found but entry isn't in db
+    (unless marker
+      (puthash file 0 nav/emms-lyrics-marker-db)
+      (setq marker 0))
     (when nav/emms-lyrics-temp-marker
       (setq marker nav/emms-lyrics-temp-marker))
     (cond
@@ -144,11 +149,17 @@ e.g., (emms-lyrics-find-lyric \"abc.lrc\")"
 (defvar emms-lyrics-viewer-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "n" (lambda ()
-			  (interactive)
-			  (later-do 'nav/emms-lyrics-fetch-other-option 1)))
+                          (interactive)
+                          (nav/emms-lyrics-fetch-other-option 1)))
+    ;; (define-key map "n" (lambda ()
+    ;;     		  (interactive)
+    ;;     		  (later-do 'nav/emms-lyrics-fetch-other-option 1)))
     (define-key map "p" (lambda ()
-			  (interactive)
-			  (later-do 'nav/emms-lyrics-fetch-other-option -1)))
+                          (interactive)
+                          (nav/emms-lyrics-fetch-other-option -1)))
+    ;; (define-key map "p" (lambda ()
+    ;;     		  (interactive)
+    ;;     		  (later-do 'nav/emms-lyrics-fetch-other-option -1)))
     (define-key map "s" 'nav/emms-lyrics-save-current-lrc)
     map)
   "Keymap for `emms-lyrics-viewer-mode'.")
