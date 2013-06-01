@@ -1,6 +1,7 @@
 (require 'emms-lastfm-scrobbler)
 
-(emms-lastfm-scrobbler-enable)
+(setq emms-lastfm-client-username "navgeet")
+(add-hook 'after-init-hook 'emms-lastfm-scrobbler-enable)
 
 ;; Patches
 (defun emms-lastfm-scrobbler-stop-hook ()
