@@ -1,15 +1,15 @@
 (require 'mode-line-frame)
 
 (defface nav/elscreen-mlf-active-face
-  '((t (:foreground "#FF6400")))
+  '((t :foreground "#FF6400"))
   "Face used for active screen in mode line frame")
 
 (defface nav/elscreen-mlf-inactive-face
-  '((t (:foreground "#4c83ff")))
+  '((t :foreground "#4c83ff"))
   "Face used for inactive screen in mode line frame")
 
 (defface nav/elscreen-mlf-extra-face
-  '((t (:foreground "gray30")))
+  '((t :foreground "gray30"))
   "Face used for extra chars in mode line frame")
 
 (defun nav/elscreen-mlf-construct-frame-line ()
