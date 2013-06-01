@@ -7,3 +7,4 @@
 (live-load-config-file "emms-iselect-conf")
 (live-load-config-file "emms-mode-line-conf")
 (live-load-config-file "emms-volume-conf")
+(live-load-config-file "emms-lastfm-conf")
