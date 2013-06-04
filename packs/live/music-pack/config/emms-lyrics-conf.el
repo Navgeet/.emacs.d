@@ -180,15 +180,19 @@ e.g., (emms-lyrics-find-lyric \"abc.lrc\")"
 (setq emms-lyrics-display-on-modeline nil)
 
 (remove-hook 'emms-player-started-hook 'emms-lyrics-start)
-(add-hook 'emms-player-started-hook (lambda ()
-				      (interactive)
-				      (setq emms-lyrics-start-time (current-time)
-                                            nav/emms-lyrics-time-track-started
-                                            (current-time)
-					    emms-lyrics-pause-time nil
-					    emms-lyrics-elapsed-time 0)
-                                      (unless nav/emms-lyrics-inhibit
-                                        (later-do 'nav/emms-lyrics-start))))
+(add-hook 'emms-player-started-hook
+          (lambda ()
+            (interactive)
+            (setq emms-lyrics-start-time (current-time)
+                  nav/emms-lyrics-time-track-started (current-time)
+                  emms-lyrics-pause-time nil
+                  emms-lyrics-elapsed-time 0)))
+
+(add-hook 'nav/emms-player-started-functions
+          (lambda (track)
+            (interactive)
+            (unless nav/emms-lyrics-inhibit
+              (later-do 'nav/emms-lyrics-start))) t)
 
 ;;; Patches
 (defun emms-lyrics-create-buffer ()
