@@ -13,7 +13,7 @@
 
 (defvar nav/emms-currently-playing-track nil)
 
-(defcustom nav/emms-player-started-hook nil
+(defcustom nav/emms-player-started-functions nil
   "*Hook run when an EMMS player starts playing."
   :group 'emms
   :type 'hook
@@ -24,6 +24,10 @@
 	      (setq nav/emms-currently-playing-track nil))))
   (add-hook 'emms-player-stopped-hook func)
   (add-hook 'emms-player-finished-hook func))
+
+(add-hook 'nav/emms-player-started-functions
+          (lambda (track)
+            (setq nav/emms-currently-playing-track track)))
 
 ;;; Patches
 (defun emms-player-start (track)
@@ -38,4 +42,4 @@
         (let ((default-directory "/"))
           (funcall (emms-player-get player 'start)
                    track)
-	  (run-hook-with-args 'nav/emms-player-started-hook track))))))
+	  (run-hook-with-args 'nav/emms-player-started-functions track))))))

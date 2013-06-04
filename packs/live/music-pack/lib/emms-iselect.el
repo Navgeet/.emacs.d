@@ -134,9 +134,8 @@ Return the previous point-max before adding."
 	   nav/emms-names-cache-db))
 
 (add-hook 'emms-track-initialize-functions 'nav/emms-add-track-to-names-cache-db t)
-(add-hook 'nav/emms-player-started-hook
+(add-hook 'nav/emms-player-started-functions
           (lambda (track)
-            (setq nav/emms-currently-playing-track track)
             (later-do 'nav/emms-add-track-name-to-history-list track)))
 
 (provide 'emms-iselect)
