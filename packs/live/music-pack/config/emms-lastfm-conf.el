@@ -1,13 +1,13 @@
 (require 'emms-lastfm-scrobbler)
 
 (setq emms-lastfm-client-username "navgeet")
-(add-hook 'after-init-hook 'emms-lastfm-scrobbler-enable)
+(add-hook 'after-init-hook 'emms-lastfm-scrobbler-enable t)
 
 ;; Patches
 (defun emms-lastfm-scrobbler-stop-hook ()
   "Submit the track to last.fm if it has been played for 240
 seconds or half the length of the track."
-  (let ((current-track (emms-playlist-current-selected-track)))
+  (let ((current-track nav/emms-currently-playing-track))
     (let ((track-length (emms-track-get current-track 'info-playing-time)))
       (when (and track-length
 		 (emms-lastfm-scrobbler-allowed-track-type current-track))
