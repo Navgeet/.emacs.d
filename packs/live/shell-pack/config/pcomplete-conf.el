@@ -10,20 +10,25 @@
 (defun pcomplete/cd ()
   (move-end-of-line 1)
   (save-match-data
-    (save-excursion
-      (re-search-backward "[^\\\\] \\(.*\\)/\\(.*\\)"))
-    (let* ((dir (match-string 1))
-           (init (match-string 2))
-           (dirr (if (equal "" dir)
-                    "/"
-                  dir))
-           (str (ido-read-directory-name "Dir: " dirr
+    (let (dir init dirr str len)
+      (if (save-excursion (looking-back "[^\\\\] \\([^/]*\\)"))
+          (progn
+            (setq dirr nil)
+            (setq init (match-string 1))
+            (setq len (length init)))
+
+        (save-excursion (re-search-backward "[^\\\\] \\(.*\\)/\\(.*\\)"))
+        (setq dir (match-string 1))
+        (setq init (match-string 2))
+        (setq dirr (if (equal "" dir) "/" dir))
+        (setq len ((+ (length dir) (length init) 1))))
+
+      (setq str (ido-read-directory-name "Dir: " dirr
                                          nil nil
-                                         init)))
-      (delete-backward-char (+ (length dir)
-                               (length init)
-                               1))
+                                         init))
+      (delete-backward-char len)
       (insert (replace-regexp-in-string " " "\\\\ " str))
+      (move-end-of-line 1)
       (throw 'get-back nil))))
 
 ;; Patches
