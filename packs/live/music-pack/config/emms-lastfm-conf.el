@@ -3,6 +3,10 @@
 (setq emms-lastfm-client-username "navgeet")
 (add-hook 'after-init-hook 'emms-lastfm-scrobbler-enable t)
 
+(add-hook 'after-init-hook (lambda ()
+                             (remove-hook 'emms-player-started-hook
+                                          'emms-lastfm-scrobbler-start-hook)) t)
+
 ;; Patches
 (defun emms-lastfm-scrobbler-stop-hook ()
   "Submit the track to last.fm if it has been played for 240
