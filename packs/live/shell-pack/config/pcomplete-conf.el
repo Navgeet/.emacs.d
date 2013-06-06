@@ -3,8 +3,9 @@
   (catch 'get-back
     (pcomplete 1)))
 
-(with-current-buffer "*eshell*"
-  (define-key eshell-mode-map [tab] 'nav/pcomplete))
+(add-hook 'eshell-mode-hook (lambda ()
+                              (interactive)
+                              (define-key eshell-mode-map [tab] 'nav/pcomplete)))
 
 (defun pcomplete/cd ()
   (move-end-of-line 1)
