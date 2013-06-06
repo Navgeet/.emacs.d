@@ -8,9 +8,14 @@
 (defface eshell-ls-normal '((((background dark)) (:foreground "gray40")))
   "")
 
+(defface eshell-prompt
+  '((((background dark)) (:foreground "green" :bold t)))
+  "")
+
 (require 'eshell)
 
 (live-load-config-file "em-smart-conf")
+(live-load-config-file "eshell-prompt-conf")
 (live-load-config-file "ansi-color-conf")
 (live-load-config-file "eshell-color-conf")
 (live-load-config-file "pcomplete-conf")
