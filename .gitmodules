@@ -74,7 +74,8 @@
         url = git://github.com/purcell/ac-nrepl.git
 [submodule "packs/dev/git-pack/vendor/submodules/magit"]
         path = packs/dev/git-pack/vendor/submodules/magit
-        url = git://github.com/magit/magit.git
+        url = https://github.com/magit/magit.git
+        ignore = dirty
 [submodule "packs/dev/clojure-pack/vendor/submodules/nrepl-eval-sexp-fu"]
         path = packs/dev/clojure-pack/vendor/submodules/nrepl-eval-sexp-fu
         url = git://github.com/samaaron/nrepl-eval-sexp-fu.git

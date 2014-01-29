@@ -1,4 +1,3 @@
-
 ;; Create tmp dirs and initialize dir vars
 (load-file (concat user-emacs-directory "bootstrap-dirs.el"))
 
@@ -10,14 +9,14 @@
 
 ;;default packs
 (let* ((pack-names '("foundation-pack"
-                     "mail-pack"
+                     ;; "mail-pack"
                      "file-management-pack"
                      "colour-pack"
                      "clojure-pack"
                      "lang-pack"
                      "power-pack"
                      "git-pack"
-                     "music-pack"
+                     ;; "music-pack"
                      "irc-pack"
                      "shell-pack"
                      "bindings-pack"))
@@ -33,3 +32,4 @@
 
 ;; load confidential data
 (load-file (concat user-emacs-directory "confidential.el"))
+(put 'upcase-region 'disabled nil)
