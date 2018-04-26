@@ -1,11 +1,11 @@
 (live-add-pack-lib "clojure-mode")
 
-(eval-after-load 'clojure-mode
-  '(font-lock-add-keywords
-    'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
-                     (0 (progn (compose-region (match-beginning 1)
-                                               (match-end 1) "λ")
-                               nil))))))
+;; (eval-after-load 'clojure-mode
+;;   '(font-lock-add-keywords
+;;     'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
+;;                      (0 (progn (compose-region (match-beginning 1)
+;;                                                (match-end 1) "λ")
+;;                                nil))))))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords
@@ -55,3 +55,21 @@
 (dolist (x '(scheme emacs-lisp lisp clojure))
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'enable-paredit-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode))
+
+(define-clojure-indent
+  (defroutes 'defun)
+  (GET 2)
+  (POST 2)
+  (PUT 2)
+  (DELETE 2)
+  (HEAD 2)
+  (ANY 2)
+  (context 2)
+  (defroutes* 'defun)
+  (GET* 2)
+  (POST* 2)
+  (PUT* 2)
+  (DELETE* 2)
+  (HEAD* 2)
+  (ANY* 2)
+  (context* 2)  )

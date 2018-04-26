@@ -16,7 +16,7 @@
 ;remove bells
 (setq ring-bell-function 'ignore)
 
-(set-default-font "Inconsolata-10")
+(set-default-font "Inconsolata-11")
 
 ;; make fringe smaller
 (if (fboundp 'fringe-mode)

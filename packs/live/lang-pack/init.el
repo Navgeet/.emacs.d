@@ -12,3 +12,4 @@
 (live-load-config-file "actionscript-conf")
 (live-load-config-file "js2-conf")
 (live-load-config-file "glsl-conf")
+(live-load-config-file "docker-conf")

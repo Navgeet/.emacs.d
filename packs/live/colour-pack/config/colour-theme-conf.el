@@ -5,5 +5,6 @@
 (load (concat (live-pack-lib-dir) "cyberpunk"))
 (load (concat (live-pack-lib-dir) "gandalf"))
 
-(color-theme-cyberpunk)
-(set-cursor-color "yellow")
+;; (color-theme-cyberpunk)
+
+;; (set-cursor-color "yellow")

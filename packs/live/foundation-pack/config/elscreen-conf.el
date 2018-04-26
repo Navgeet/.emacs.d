@@ -58,10 +58,7 @@ when error is occurred."
   (elscreen-create)
   (elscreen-create)
   (elscreen-create)
-  ;; 1 screen for music
   (elscreen-create)
-  (elscreen-goto 5)
-  (nav/elscreen-music-screen-init)
   ;; finally..
   (elscreen-goto 1))
 
